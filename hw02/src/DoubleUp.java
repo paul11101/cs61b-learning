@@ -5,7 +5,8 @@ public class DoubleUp {
      */
    public static String doubleUp(String s) {
       // TODO: Fill in this function
-      return null;
+      
+      return s;
    }
    
    public static void main(String[] args) {
