@@ -43,7 +43,8 @@ public class IntList {
      */
     public static IntList incrRecursiveNondestructive(IntList L, int x) {
         // TODO: Fill in this code
-        return null;
+        if (L == null) return null;
+        return new IntList(L.first + x, incrRecursiveNondestructive(L.rest, x));
     }
 
     /**
@@ -53,7 +54,10 @@ public class IntList {
      */
     public static IntList incrRecursiveDestructive(IntList L, int x) {
         // TODO: Fill in this code
-        return null;
+        if (L == null) return null;
+        L.first += x;
+        incrRecursiveDestructive(L.rest, x);
+        return L;
     }
 
     /**
@@ -63,7 +67,17 @@ public class IntList {
      */
     public static IntList incrIterativeNondestructive(IntList L, int x) {
         // TODO: Fill in this code
-        return null;
+        if (L == null) return null;
+        IntList newHead = new IntList(L.first + x, null);
+        IntList currentNew = newHead;
+        IntList currentOld = L.rest;
+
+        while (currentOld != null) {
+            currentNew.rest = new IntList(currentOld.first + x, null);
+            currentNew = currentNew.rest;
+            currentOld = currentOld.rest;
+        }
+        return newHead;
     }
 
     /**
@@ -74,7 +88,12 @@ public class IntList {
      */
     public static IntList incrIterativeDestructive(IntList L, int x) {
         // TODO: Fill in this code
-        return null;
+        IntList current = L;
+        while (current != null) {
+            current.first += x;
+            current = current.rest;
+        }
+        return L;
     }
 
     /**
@@ -83,7 +102,9 @@ public class IntList {
      */
     public static IntList concatenate(IntList L1, IntList L2) {
         // TODO: Fill in this code
-        return null;
+        if (L1 == null) return L2;
+        L1.rest = concatenate(L1.rest, L2);
+        return L1;
     }
 
     /*
